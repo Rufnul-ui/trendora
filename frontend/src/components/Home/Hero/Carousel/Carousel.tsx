@@ -4,15 +4,24 @@ import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import slides from "@/utils/constants/slides";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import s from "./Carousel.module.css";
 import { useRouter } from "next/navigation";
+
+type Product = {
+  id: string;
+  image: string;
+  title: string;
+  description: string;
+  buttonText: string;
+  position: string;
+};
 
 function EmblaCarousel() {
   const router = useRouter();
 
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [product, setProduct] = useState<Product[]>([]);
 
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [
     Autoplay({ delay: 5000 }),
@@ -43,31 +52,30 @@ function EmblaCarousel() {
     };
   }, [emblaApi]);
 
-  // Autoplay
+  // Fetch slides from database
   useEffect(() => {
-    if (!emblaApi) return;
+    const getProducts = async () => {
+      const response = await fetch("http://localhost:3001/slides");
+      const data: Product[] = await response.json();
 
-    const autoplay = emblaApi.plugins().autoplay;
-
-    autoplay?.play();
-
-    return () => {
-      autoplay?.stop();
+      setProduct(data);
     };
-  }, [emblaApi]);
+
+    getProducts();
+  }, []);
 
   return (
     <section className={s.embla}>
       <div className={s.embla__viewport} ref={emblaRef}>
         <div className={s.embla__container}>
-          {slides.map((slide, index) => (
-            <div className={s.embla__slide} key={index}>
+          {product.map((slide) => (
+            <div className={s.embla__slide} key={slide.id}>
               <Image
                 src={slide.image}
                 alt={slide.title}
                 width={1650}
                 height={700}
-                priority={index === 0}
+                priority={selectedIndex === 0}
               />
 
               <div
@@ -106,7 +114,7 @@ function EmblaCarousel() {
 
       {/* Slide Indicators */}
       <div className={s.dots}>
-        {slides.map((_, index) => (
+        {product.map((_, index) => (
           <button
             key={index}
             className={`${s.dot} ${selectedIndex === index ? s.active : ""}`}

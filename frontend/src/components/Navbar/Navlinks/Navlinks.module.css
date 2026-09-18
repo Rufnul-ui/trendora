@@ -1,7 +1,7 @@
 .wrapper {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 40px;
 }
 
 .link {
@@ -9,8 +9,8 @@
 
   color: white;
   font-family: sans-serif;
-  font-size: 18px;
-
+  font-size: 14px;
+  font-weight: 400;
   text-decoration: none;
 
   transition: color 0.3s ease;

@@ -5,6 +5,7 @@ import { IndianRupeeIcon, RefreshCw, ShieldCheck, Van } from "lucide-react";
 const Service = () => {
   return (
     <div className={s.main}>
+      <h1 className={s.h1}>Our Services</h1>
       <div className={s.wrapper}>
         <div className={s.icon}>
           <div>

@@ -21,14 +21,27 @@ const Buttons = ({ menuOpen, setMenuOpen }: ButtonsProps) => {
 
   return (
     <div className={s.wrapper}>
-      <Search className={s.btn} onClick={() => router.push("/search")} />
+      <Search
+        className={s.btn}
+        strokeWidth={3}
+        onClick={() => router.push("/search")}
+      />
 
-      <Heart className={s.btn} onClick={() => router.push("/wishlist")} />
+      <Heart
+        className={s.btn}
+        strokeWidth={3}
+        onClick={() => router.push("/wishlist")}
+      />
 
-      <ShoppingBag className={s.btn} onClick={() => router.push("/cart")} />
+      <ShoppingBag
+        className={s.btn}
+        strokeWidth={3}
+        onClick={() => router.push("/cart")}
+      />
 
       <CircleUserRound
         className={s.btn}
+        strokeWidth={3}
         onClick={() => router.push("/login")}
       />
 
