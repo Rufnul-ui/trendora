@@ -1,0 +1,103 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.h1 {
+  margin: 0;
+
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  color: #bdbdbd;
+}
+
+.social {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.icon {
+  color: #bdbdbd;
+
+  cursor: pointer;
+
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.icon:hover {
+  color: crimson;
+  transform: translateY(-2px);
+}
+
+.mail {
+  cursor: pointer;
+
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.mail:hover {
+  color: goldenrod;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 768px) {
+  .wrapper {
+    gap: 14px;
+  }
+
+  .h1 {
+    font-size: 19px;
+  }
+
+  .main {
+    gap: 14px;
+  }
+
+  .social {
+    gap: 20px;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+  .wrapper {
+    align-items: center;
+    gap: 14px;
+
+    text-align: center;
+  }
+
+  .h1 {
+    font-size: 18px;
+  }
+
+  .main {
+    align-items: center;
+    gap: 14px;
+  }
+
+  .social {
+    justify-content: center;
+    gap: 20px;
+  }
+}

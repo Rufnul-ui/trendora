@@ -1,0 +1,32 @@
+.wrapper {
+  width: 100%;
+  min-height: 70px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 15px 20px;
+
+  border-top: 1px solid #444;
+
+  color: #bdbdbd;
+
+  font-size: 14px;
+  line-height: 1.5;
+
+  text-align: center;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+  .wrapper {
+    min-height: 65px;
+    padding: 14px 15px;
+
+    font-size: 12px;
+  }
+}

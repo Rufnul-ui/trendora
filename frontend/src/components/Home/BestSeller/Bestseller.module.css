@@ -1,0 +1,10 @@
+.main {
+  display: flex;
+  padding-top: 20px;
+}
+.wrapped {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: auto;
+}

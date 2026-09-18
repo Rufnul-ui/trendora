@@ -1,0 +1,101 @@
+.wrapper {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.second {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn {
+  height: 30px;
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  background: transparent;
+
+  font-size: 16px;
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  transition: color 0.25s ease;
+}
+
+.btn:hover {
+  color: chocolate;
+}
+
+.rightBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 768px) {
+  .wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .first {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .second {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .btn {
+    font-size: 15px;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 480px) {
+  .wrapper {
+    gap: 15px;
+  }
+
+  .first {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 10px 18px;
+  }
+
+  .second {
+    justify-content: flex-start;
+  }
+
+  .btn {
+    height: 28px;
+    font-size: 14px;
+  }
+
+  .rightBtn {
+    gap: 6px;
+  }
+}

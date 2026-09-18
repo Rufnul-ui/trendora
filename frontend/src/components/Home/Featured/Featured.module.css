@@ -1,0 +1,43 @@
+.main {
+  width: 100%;
+  padding: 30px 0 50px;
+  background-color: #f5f5f5;
+}
+
+.wrapped {
+  width: 90%;
+  max-width: 1400px;
+
+  display: flex;
+  flex-direction: column;
+
+  margin: 0 auto;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 768px) {
+  .main {
+    padding: 25px 0 40px;
+  }
+
+  .wrapped {
+    width: 92%;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 480px) {
+  .main {
+    padding: 20px 0 30px;
+  }
+
+  .wrapped {
+    width: 92%;
+  }
+}

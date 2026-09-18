@@ -1,0 +1,77 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  color: white;
+  text-decoration: none;
+}
+
+.h1 {
+  margin: 0;
+
+  color: white;
+
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
+
+  letter-spacing: 1px;
+}
+
+.icon {
+  width: 36px;
+  height: 36px;
+
+  color: crimson;
+}
+
+.span {
+  color: crimson;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 768px) {
+  .h1 {
+    font-size: 24px;
+  }
+
+  .icon {
+    width: 31px;
+    height: 31px;
+  }
+
+  .link {
+    gap: 6px;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 480px) {
+  .h1 {
+    font-size: 21px;
+  }
+
+  .icon {
+    width: 27px;
+    height: 27px;
+  }
+
+  .link {
+    gap: 5px;
+  }
+}
