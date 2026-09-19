@@ -5,7 +5,7 @@ import Info from "./Info/Info";
 
 const Contact = () => {
   return (
-    <div>
+    <div className={s.wrapper}>
       <Location />
       <Info />
     </div>

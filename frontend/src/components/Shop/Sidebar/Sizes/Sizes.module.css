@@ -1,0 +1,50 @@
+.wrapper {
+  width: 100%;
+}
+
+.title {
+  margin: 0 0 18px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #222;
+}
+
+.sizes {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 10px;
+}
+
+.size {
+  cursor: pointer;
+}
+
+.size input {
+  display: none;
+}
+
+.size span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 48px;
+  height: 38px;
+  padding: 0 12px;
+  border: 1px solid #d8d8d8;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  transition: all 0.2s ease;
+}
+
+.size:hover span {
+  border-color: #222;
+}
+
+.size input:checked + span {
+  background: #222;
+  border-color: #222;
+  color: #fff;
+}

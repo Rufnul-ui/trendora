@@ -8,37 +8,13 @@ import Buttons from "@/components/Navbar/Buttons/Buttons";
 import { usePathname } from "next/navigation";
 
 const Navbar = () => {
-  const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const path = usePathname();
-
-  useEffect(() => {
-    if (path !== "/") {
-      setScrolled(true);
-      return;
-    }
-
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    handleScroll();
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [path]);
-
-  useEffect(() => {
-    setMenuOpen(false);
-  }, [path]);
 
   return (
-    <div className={`${s.wrapper} ${scrolled ? s.bgScrolled : ""}`}>
+    <div className={`${s.wrapper}`}>
       <div className={s.main}>
         <Logo />
-
         <Navlinks />
-
         <Buttons menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       </div>
 

@@ -113,7 +113,7 @@ function EmblaCarousel() {
       </button>
 
       {/* Slide Indicators */}
-      <div className={s.dots}>
+      <div className={s.dots}> 
         {product.map((_, index) => (
           <button
             key={index}

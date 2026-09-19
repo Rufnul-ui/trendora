@@ -76,7 +76,7 @@
       "title": "Dress With Confidence",
       "description": "Refined tailoring designed for your most important moments.",
       "buttonText": "Discover More",
-      "position": "right"
+      "position": "left"
     },
     {
       "id": "3",
@@ -84,7 +84,7 @@
       "title": "Elegance Redefined",
       "description": "Experience timeless craftsmanship made for the modern gentleman.",
       "buttonText": "View Collection",
-      "position": "left"
+      "position": "right"
     },
 
     {
@@ -93,7 +93,7 @@
       "title": "Made For The Moment",
       "description": "Sophisticated styles tailored to make every occasion memorable.",
       "buttonText": "Shop Now",
-      "position": "right"
+      "position": "left"
     },
 
     {
@@ -103,6 +103,72 @@
       "description": "Premium fabrics and refined details crafted to elevate your style.",
       "buttonText": "Explore Styles",
       "position": "left"
+    }
+  ],
+  "allProducts": [
+    {
+      "id": "1",
+      "image": "/products/mens/hoodie-3.jpg",
+      "alt": "Men wearing casual shirt",
+      "title": "Casual Collection",
+      "price": "900",
+      "rating": "4.5"
+    },
+    {
+      "id": "2",
+      "image": "/products/mens/hoodie.jpg",
+      "alt": "Men wearing formal outfit",
+      "title": "Formal Collection",
+      "price": "900",
+      "rating": "4.5"
+    },
+    {
+      "id": "3",
+      "image": "/products/accessories/shoe.jpg",
+      "alt": "Men wearing formal outfit",
+      "title": "Formal Collection",
+      "price": "900",
+      "rating": "4.5"
+    },
+    {
+      "id": "4",
+      "image": "/products/mens/hoodie-2.jpg",
+      "alt": "Men wearing formal outfit",
+      "title": "Formal Collection",
+      "price": "900",
+      "rating": "4.5"
+    },
+    {
+      "id": "5",
+      "image": "/products/mens/blazers.jpg",
+      "alt": "Men wearing casual shirt",
+      "title": "Casual Collection",
+      "price": "900",
+      "rating": "4.5"
+    },
+    {
+      "id": "6",
+      "image": "/products/womens/81vCseZYquL._SY879_.jpg",
+      "alt": "Men wearing formal outfit",
+      "title": "Formal Collection",
+      "price": "900",
+      "rating": "4.5"
+    },
+    {
+      "id": "7",
+      "image": "/products/accessories/headset.jpg",
+      "alt": "Men wearing formal outfit",
+      "title": "Formal Collection",
+      "price": "900",
+      "rating": "4.5"
+    },
+    {
+      "id": "8",
+      "image": "/products/mens/hoodie-2.jpg",
+      "alt": "Men wearing formal outfit",
+      "title": "Formal Collection",
+      "price": "900",
+      "rating": "4.5"
     }
   ]
 }

@@ -36,51 +36,38 @@
 .content {
   position: absolute;
   top: 50%;
-  left: 8%;
   z-index: 2;
-
   width: min(500px, 42%);
   transform: translateY(-50%);
-
-  text-align: left;
 }
 
 .content h1 {
   margin: 0 0 15px;
-
   font-family: var(--font-tangerine);
   font-size: clamp(38px, 5vw, 72px);
   font-weight: 700;
   line-height: 1.05;
-
   color: crimson;
 }
 
 .content p {
   max-width: 450px;
   margin: 0 0 25px;
-
   font-size: clamp(15px, 1.5vw, 19px);
   line-height: 1.6;
-
   color: goldenrod;
 }
 
 .content button {
   padding: 13px 28px;
-
   border: 1px solid transparent;
   border-radius: 25px;
-
   background: white;
   color: #222;
-
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.5px;
-
   cursor: pointer;
-
   transition:
     background-color 0.3s ease,
     color 0.3s ease,
@@ -99,23 +86,17 @@
    CONTENT POSITIONS
 ========================= */
 
-.content--top-left {
-  top: 25%;
+.content--left {
   left: 8%;
-  transform: none;
+  text-align: left;
 }
 
-.content--bottom-right {
-  top: auto;
+.content--right {
   right: 8%;
-  bottom: 15%;
-  left: auto;
-
-  transform: none;
   text-align: right;
 }
 
-.content--bottom-right p {
+.content--right p {
   margin-left: auto;
 }
 
@@ -127,27 +108,20 @@
   position: absolute;
   top: 50%;
   z-index: 5;
-
   width: 50px;
   height: 60px;
   padding: 0;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   border: none;
   background: transparent;
-
   color: rgba(255, 255, 255, 0.65);
   font-size: 52px;
   font-weight: 300;
   line-height: 1;
-
   cursor: pointer;
-
   transform: translateY(-50%);
-
   transition:
     color 0.3s ease,
     transform 0.3s ease;
@@ -175,11 +149,9 @@
   bottom: 25px;
   left: 50%;
   z-index: 10;
-
   display: flex;
   align-items: center;
   gap: 10px;
-
   transform: translateX(-50%);
 }
 
@@ -187,15 +159,11 @@
   width: 10px;
   height: 10px;
   padding: 0;
-
   border: none;
   border-radius: 50%;
-
   background: white;
   opacity: 0.5;
-
   cursor: pointer;
-
   transition:
     opacity 0.3s ease,
     transform 0.3s ease;
@@ -221,14 +189,13 @@
 
   .content {
     width: min(450px, 48%);
+  }
+
+  .content--left {
     left: 7%;
   }
 
-  .content--top-left {
-    left: 7%;
-  }
-
-  .content--bottom-right {
+  .content--right {
     right: 7%;
   }
 
@@ -259,18 +226,14 @@
   .content {
     width: 50%;
     max-width: 380px;
+  }
+
+  .content--left {
     left: 7%;
   }
 
-  .content--top-left {
-    top: 24%;
-    left: 7%;
-  }
-
-  .content--bottom-right {
+  .content--right {
     right: 7%;
-    bottom: 14%;
-    left: auto;
   }
 
   .content h1 {
@@ -327,18 +290,14 @@
   .content {
     width: 68%;
     max-width: 280px;
+  }
+
+  .content--left {
     left: 8%;
   }
 
-  .content--top-left {
-    top: 23%;
-    left: 8%;
-  }
-
-  .content--bottom-right {
+  .content--right {
     right: 8%;
-    bottom: 13%;
-    left: auto;
   }
 
   .content h1 {
@@ -395,14 +354,13 @@
 
   .content {
     width: 70%;
+  }
+
+  .content--left {
     left: 9%;
   }
 
-  .content--top-left {
-    left: 9%;
-  }
-
-  .content--bottom-right {
+  .content--right {
     right: 9%;
   }
 
