@@ -1,11 +1,14 @@
-import React from "react";
 import s from "./SendOTPbtn.module.css";
 
-const SendOTPbtn = () => {
+type sendOtpProps = {
+  disabled?: boolean;
+};
+
+const SendOTPbtn = ({ disabled = false }: sendOtpProps) => {
   return (
     <div className={s.wrapper}>
-      <button type="submit" className={s.loginBtn}>
-        Send OTP
+      <button type="submit" className={s.loginBtn} disabled={disabled}>
+        {disabled ? "Sending OTP" : "Send OTP"}
       </button>
     </div>
   );

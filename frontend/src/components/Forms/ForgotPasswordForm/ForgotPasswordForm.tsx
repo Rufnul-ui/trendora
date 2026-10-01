@@ -7,20 +7,18 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import ForgotPwdFormLinks from "./ForgotPwdFormLinks/ForgotPwdFormLinks";
 import { useEffect, useState } from "react";
+import { ForgotPwd } from "@/api/auth/forgotPassword";
 
 type FormValues = {
   email: string;
 };
 
-type User = {
-  id: string | number;
-  name: string;
-  email: string;
-  password: string;
-};
-
 const ForgotPasswordForm = () => {
-  const [users, setUsers] = useState<User[]>([]);
+  const [message, setMessage] = useState("");
+  const [messageType, setMessageType] = useState<"success" | "error">(
+    "success",
+  );
+  const [loading, setLoading] = useState(false);
 
   const {
     register,
@@ -31,56 +29,71 @@ const ForgotPasswordForm = () => {
     mode: "onChange",
   });
 
-  useEffect(() => {
-    const fetchUsers = async (): Promise<void> => {
-      try {
-        const response = await fetch("http://localhost:3001/user");
+  const onSubmit = async (data: FormValues) => {
+    try {
+      setLoading(true);
+      setMessage("");
 
-        if (!response.ok) {
-          throw new Error("Failed to fetch users");
-        }
-
-        const data: User[] = await response.json();
-
-        setUsers(data);
-      } catch (error) {
-        console.error(error);
+      const user = await ForgotPwd(data);
+      if (user) {
+        setMessageType("success");
+        setMessage("OTP sent to your Email");
+      } else {
+        setMessageType("error");
+        setMessage("Invalid Email address");
       }
-    };
-
-    fetchUsers();
-  }, []);
-
-  const onSubmit = handleSubmit((data) => {
-    const user = users.find((user) => user.email === data.email);
-
-    if (user) {
-      console.log("Email found. Send OTP:", user.email);
-    } else {
-      console.log("Email not registered");
+    } catch (error) {
+      console.error(error);
+      setMessage("Something went wrong");
+    } finally {
+      setLoading(false);
     }
-  });
+  };
+
+  useEffect(() => {
+    if (!message) return;
+
+    const timer = setTimeout(() => {
+      setMessage("");
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, [message]);
 
   return (
-    <form className={s.form} onSubmit={onSubmit}>
-      <h1 className={s.h1}>Forgot Password</h1>
-
-      <h4>Email Address</h4>
-      <input
-        {...register("email")}
-        type="email"
-        placeholder="you@example.com"
-        className={s.inputBox}
-      />
-
-      {errors.email && (
-        <p style={{ color: "red", margin: "4px 0" }}>{errors.email.message}</p>
+    <div>
+      {message && (
+        <div
+          className={`${s.toast} ${
+            messageType === "success" ? s.success : s.error
+          }`}
+        >
+          {message}
+        </div>
       )}
 
-      <SendOTPbtn />
+      <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
+        <h1 className={s.h1}>Forgot Password</h1>
 
-      <ForgotPwdFormLinks />
-    </form>
+        <h4>Email Address</h4>
+        <input
+          {...register("email")}
+          type="email"
+          placeholder="you@example.com"
+          className={s.inputBox}
+        />
+
+        {errors.email && (
+          <p style={{ color: "red", margin: "4px 0" }}>
+            {errors.email.message}
+          </p>
+        )}
+
+        <SendOTPbtn disabled={loading} />
+
+        <ForgotPwdFormLinks />
+      </form>
+    </div>
   );
 };
 
