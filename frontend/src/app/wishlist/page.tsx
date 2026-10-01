@@ -1,8 +1,10 @@
-import React from "react";
+import { Metadata } from "next";
 
-type Props = {};
+export const metadata: Metadata = {
+  title: "Wishlist | Trendora",
+};
 
-const page = (props: Props) => {
+const page = () => {
   return <div>page</div>;
 };
 

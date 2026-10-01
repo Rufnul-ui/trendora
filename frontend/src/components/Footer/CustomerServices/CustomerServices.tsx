@@ -3,12 +3,10 @@ import React from "react";
 import s from "./CustomerServices.module.css";
 import customerServices from "@/utils/constants/FooterConstants/customerServices";
 
-type Props = {};
-
-const CustomerServices = (props: Props) => {
+const CustomerServices = () => {
   return (
     <div className={s.wrapper}>
-      <h1 className={s.h1}>Quick Links</h1>
+      <h1 className={s.h1}>Support</h1>
       <div className={s.main}>
         <p className={s.p}>
           {customerServices.map((i) => (

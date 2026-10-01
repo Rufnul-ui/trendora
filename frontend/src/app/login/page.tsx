@@ -2,6 +2,12 @@ import React from "react";
 import s from "./page.module.css";
 import LoginForm from "@/components/Forms/LoginForm/LoginForm";
 import Image from "next/image";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Login | Trendora",
+  description: "Login to your Trendora account",
+};
 
 const Page = () => {
   return (

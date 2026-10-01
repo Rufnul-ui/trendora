@@ -1,7 +1,12 @@
-import React from "react";
 import s from "./page.module.css";
 import SignupForm from "@/components/Forms/SignupForm/SignupForm";
 import Image from "next/image";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Signup | Trendora",
+  description: "Signup and Enjoy Shopping",
+};
 
 const page = () => {
   return (

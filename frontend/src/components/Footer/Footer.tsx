@@ -10,9 +10,6 @@ const Footer = () => {
   return (
     <div className={s.main}>
       <div className={s.wrapper}>
-        <div className={s.logo}>
-          <Logo />
-        </div>
         <div className={s.middle}>
           <div className={s.midContents}>
             <QuickLinks />
