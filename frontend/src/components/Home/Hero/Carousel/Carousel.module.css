@@ -55,15 +55,15 @@
   margin: 0 0 25px;
   font-size: clamp(15px, 1.5vw, 19px);
   line-height: 1.6;
-  color: goldenrod;
+  color: rgb(244, 170, 95);
 }
 
 .content button {
   padding: 13px 28px;
   border: 1px solid transparent;
   border-radius: 25px;
-  background: white;
-  color: #222;
+  background: rgba(0, 0, 0, 0.25);
+  color: white;
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.5px;
@@ -76,8 +76,7 @@
 }
 
 .content button:hover {
-  border-color: white;
-  background: transparent;
+  background: black;
   color: white;
   transform: translateY(-2px);
 }

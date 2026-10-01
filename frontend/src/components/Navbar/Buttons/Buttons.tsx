@@ -5,10 +5,10 @@ import { useRouter } from "next/navigation";
 import {
   CircleUserRound,
   Heart,
-  Search,
   ShoppingBag,
   Menu,
   X,
+  Search,
 } from "lucide-react";
 
 interface ButtonsProps {
@@ -21,20 +21,11 @@ const Buttons = ({ menuOpen, setMenuOpen }: ButtonsProps) => {
 
   return (
     <div className={s.wrapper}>
-      <Search
-        className={s.btn}
-        onClick={() => router.push("/search")}
-      />
+      <Search className={s.btn} onClick={() => router.push("/search")} />
 
-      <Heart
-        className={s.btn}
-        onClick={() => router.push("/wishlist")}
-      />
+      <Heart className={s.btn} onClick={() => router.push("/wishlist")} />
 
-      <ShoppingBag
-        className={s.btn}
-        onClick={() => router.push("/cart")}
-      />
+      <ShoppingBag className={s.btn} onClick={() => router.push("/cart")} />
 
       <CircleUserRound
         className={s.btn}

@@ -1,17 +1,16 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import s from "./Navbar.module.css";
 import Logo from "./Logo/Logo";
 import Navlinks from "./Navlinks/Navlinks";
 import Buttons from "@/components/Navbar/Buttons/Buttons";
-import { usePathname } from "next/navigation";
 
 const Navbar = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState<boolean>(false);
 
   return (
-    <div className={`${s.wrapper}`}>
+    <div className={s.wrapper}>
       <div className={s.main}>
         <Logo />
         <Navlinks />

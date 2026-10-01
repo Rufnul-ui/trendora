@@ -16,7 +16,7 @@ import { Shirt, ShoppingBag } from "lucide-react";
 const OurBrands = () => {
   return (
     <section className={s.main}>
-      <h1 className={s.h1}>Our Brands</h1>
+      <h1 className={s.h1}>POPULAR BRANDS</h1>
 
       <div className={s.iconImg}>
         <CgAdidas className={s.icon} />
