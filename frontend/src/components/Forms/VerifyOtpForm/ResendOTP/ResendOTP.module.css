@@ -1,0 +1,17 @@
+.resend {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #666;
+}
+
+.resend button {
+  border: none;
+  background: none;
+  color: #111;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.resend button:hover {
+  text-decoration: underline;
+}

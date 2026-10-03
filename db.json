@@ -3,7 +3,7 @@
     {
       "name": "test",
       "email": "test@test.com",
-      "password": "Test@123",
+      "password": "@Test123",
       "id": "IL1sQM-Ivk0"
     }
   ],
@@ -113,67 +113,91 @@
     {
       "id": "1",
       "image": "/products/mens/hoodie-3.jpg",
-      "alt": "Men wearing casual shirt",
-      "title": "Casual Collection",
-      "price": "900",
-      "rating": "4.5"
+      "alt": "Men and women wearing casual hoodie",
+      "title": "Hoodie",
+      "price": 900,
+      "rating": 4.5,
+      "category": ["Men", "Women"],
+      "colors": ["Black", "Grey", "White"],
+      "sizes": ["S", "M", "L", "XL"]
     },
     {
       "id": "2",
       "image": "/products/mens/hoodie.jpg",
-      "alt": "Men wearing formal outfit",
-      "title": "Formal Collection",
-      "price": "900",
-      "rating": "4.5"
+      "alt": "Men and women wearing hoodie",
+      "title": "Hoodie",
+      "price": 1200,
+      "rating": 4.5,
+      "category": ["Men", "Women"],
+      "colors": ["Black", "Blue"],
+      "sizes": ["S", "M", "L", "XL", "XXL"]
     },
     {
       "id": "3",
       "image": "/products/accessories/shoe.jpg",
-      "alt": "Men wearing formal outfit",
-      "title": "Formal Collection",
-      "price": "900",
-      "rating": "4.5"
+      "alt": "Formal shoes",
+      "title": "Shoe",
+      "price": 2500,
+      "rating": 4.5,
+      "category": ["Men", "Women"],
+      "colors": ["Black", "Brown"],
+      "sizes": ["7", "8", "9", "10"]
     },
     {
       "id": "4",
       "image": "/products/mens/hoodie-2.jpg",
-      "alt": "Men wearing formal outfit",
-      "title": "Formal Collection",
-      "price": "900",
-      "rating": "4.5"
+      "alt": "Men and women wearing hoodie",
+      "title": "Hoodie",
+      "price": 1500,
+      "rating": 4.5,
+      "category": ["Men", "Women"],
+      "colors": ["Black", "White", "Green"],
+      "sizes": ["M", "L", "XL"]
     },
     {
       "id": "5",
       "image": "/products/mens/blazers.jpg",
-      "alt": "Men wearing casual shirt",
-      "title": "Casual Collection",
-      "price": "900",
-      "rating": "4.5"
+      "alt": "Men and women wearing waist coat",
+      "title": "Waist Coat",
+      "price": 3000,
+      "rating": 4.5,
+      "category": ["Men"],
+      "colors": ["Black", "Grey", "Navy"],
+      "sizes": ["S", "M", "L", "XL"]
     },
     {
       "id": "6",
       "image": "/products/womens/81vCseZYquL._SY879_.jpg",
-      "alt": "Men wearing formal outfit",
-      "title": "Formal Collection",
-      "price": "900",
-      "rating": "4.5"
+      "alt": "Women wearing chudidhar",
+      "title": "Chudidhar",
+      "price": 1800,
+      "rating": 4.5,
+      "category": ["Women"],
+      "colors": ["Black", "Red", "Blue"],
+      "sizes": ["S", "M", "L", "XL"]
     },
     {
       "id": "7",
       "image": "/products/accessories/headset.jpg",
-      "alt": "Men wearing formal outfit",
-      "title": "Formal Collection",
-      "price": "900",
-      "rating": "4.5"
+      "alt": "Wireless headphones",
+      "title": "AirPods",
+      "price": 5000,
+      "rating": 4.5,
+      "category": ["Men", "Women", "Accessories"],
+      "colors": ["White", "Black"],
+      "sizes": ["One Size"]
     },
     {
       "id": "8",
       "image": "/products/mens/hoodie-2.jpg",
-      "alt": "Men wearing formal outfit",
-      "title": "Formal Collection",
-      "price": "900",
-      "rating": "4.5"
+      "alt": "Men and women wearing hoodie",
+      "title": "Hoodie",
+      "price": 2000,
+      "rating": 4.5,
+      "category": ["Men", "Women"],
+      "colors": ["Grey", "Blue", "Black"],
+      "sizes": ["S", "M", "L", "XL", "XXL"]
     }
   ],
-  "$schema": "./node_modules/json-server/schema.json"
+  "$schema": ["./node_modules/json-server/schema.json"]
 }

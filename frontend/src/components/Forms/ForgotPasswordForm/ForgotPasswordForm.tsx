@@ -8,6 +8,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import ForgotPwdFormLinks from "./ForgotPwdFormLinks/ForgotPwdFormLinks";
 import { useEffect, useState } from "react";
 import { ForgotPwd } from "@/api/auth/forgotPassword";
+import { useRouter } from "next/navigation";
 
 type FormValues = {
   email: string;
@@ -19,6 +20,8 @@ const ForgotPasswordForm = () => {
     "success",
   );
   const [loading, setLoading] = useState(false);
+
+  const router = useRouter();
 
   const {
     register,
@@ -35,7 +38,12 @@ const ForgotPasswordForm = () => {
       setMessage("");
 
       const user = await ForgotPwd(data);
+
       if (user) {
+        sessionStorage.setItem("resetEmail", data.email);
+
+        console.log("Saved reset email:", sessionStorage.getItem("resetEmail"));
+
         setMessageType("success");
         setMessage("OTP sent to your Email");
       } else {
@@ -44,6 +52,7 @@ const ForgotPasswordForm = () => {
       }
     } catch (error) {
       console.error(error);
+      setMessageType("error");
       setMessage("Something went wrong");
     } finally {
       setLoading(false);
@@ -51,14 +60,15 @@ const ForgotPasswordForm = () => {
   };
 
   useEffect(() => {
-    if (!message) return;
+    if (!message || messageType !== "success") return;
 
     const timer = setTimeout(() => {
       setMessage("");
-    }, 5000);
+      router.push("/verify-otp");
+    }, 2000);
 
     return () => clearTimeout(timer);
-  }, [message]);
+  }, [message, messageType, router]);
 
   return (
     <div>
@@ -76,6 +86,7 @@ const ForgotPasswordForm = () => {
         <h1 className={s.h1}>Forgot Password</h1>
 
         <h4>Email Address</h4>
+
         <input
           {...register("email")}
           type="email"
