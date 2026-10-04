@@ -118,7 +118,7 @@
       "price": 900,
       "rating": 4.5,
       "category": ["Men", "Women"],
-      "colors": ["Black", "Grey", "White"],
+      "colors": ["Black"],
       "sizes": ["S", "M", "L"]
     },
     {
@@ -128,8 +128,8 @@
       "title": "Hoodie",
       "price": 1200,
       "rating": 4.5,
-      "category": ["Men", "Women"],
-      "colors": ["Black", "Blue"],
+      "category": ["Men"],
+      "colors": ["Black"],
       "sizes": ["S", "M", "L"]
     },
     {
@@ -139,8 +139,8 @@
       "title": "Shoe",
       "price": 2500,
       "rating": 4.5,
-      "category": ["Men", "Women"],
-      "colors": ["Black", "Brown"],
+      "category": ["Accessories"],
+      "colors": ["White"],
       "sizes": ["7", "8", "9", "10"]
     },
     {
@@ -151,7 +151,7 @@
       "price": 1500,
       "rating": 4.5,
       "category": ["Men", "Women"],
-      "colors": ["Black", "White", "Green"],
+      "colors": ["Black"],
       "sizes": ["M", "L"]
     },
     {
@@ -162,7 +162,7 @@
       "price": 3000,
       "rating": 4.5,
       "category": ["Men"],
-      "colors": ["Black", "Grey", "Navy"],
+      "colors": ["Black"],
       "sizes": ["S", "M", "L", "XL"]
     },
     {
@@ -173,7 +173,7 @@
       "price": 1800,
       "rating": 4.5,
       "category": ["Women"],
-      "colors": ["Black", "Red", "Blue"],
+      "colors": ["Yellow"],
       "sizes": ["S", "M", "XL"]
     },
     {
@@ -184,7 +184,7 @@
       "price": 5000,
       "rating": 4.5,
       "category": ["Accessories"],
-      "colors": ["White", "Black"],
+      "colors": ["White"],
       "sizes": ["One Size"]
     },
     {
@@ -195,7 +195,7 @@
       "price": 2000,
       "rating": 4.5,
       "category": ["Men", "Women"],
-      "colors": ["Grey", "Blue", "Black"],
+      "colors": ["Grey"],
       "sizes": ["S", "L", "XL", "XXL"]
     }
   ],

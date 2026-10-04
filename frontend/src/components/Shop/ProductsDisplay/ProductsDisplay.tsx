@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Heart, ShoppingCart, Zap } from "lucide-react";
 import s from "./ProductsDisplay.module.css";
 import type { Product } from "../Shop";
+import { useWishlist } from "@/context/WishlistContext";
 
 type ProductsDisplayProps = {
   products: Product[];
@@ -12,13 +13,7 @@ type ProductsDisplayProps = {
 
 const ProductsDisplay = ({ products }: ProductsDisplayProps) => {
   const [sort, setSort] = useState("featured");
-  const [wishlist, setWishlist] = useState<string[]>([]);
-
-  const toggleWishlist = (id: string) => {
-    setWishlist((prev) =>
-      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id],
-    );
-  };
+  const { wishlist, toggleWishlist } = useWishlist();
 
   const sortedProducts = [...products].sort((a, b) => {
     if (sort === "low-high") {
@@ -61,7 +56,9 @@ const ProductsDisplay = ({ products }: ProductsDisplayProps) => {
       ) : (
         <div className={s.grid}>
           {sortedProducts.map((product) => {
-            const isWishlisted = wishlist.includes(product.id);
+            const isWishlisted = wishlist.some(
+              (item) => item.id === product.id,
+            );
 
             return (
               <article className={s.card} key={product.id}>
@@ -79,7 +76,7 @@ const ProductsDisplay = ({ products }: ProductsDisplayProps) => {
                     className={`${s.wishlist} ${
                       isWishlisted ? s.wishlisted : ""
                     }`}
-                    onClick={() => toggleWishlist(product.id)}
+                    onClick={() => toggleWishlist(product)}
                     aria-label={
                       isWishlisted
                         ? `Remove ${product.title} from wishlist`
