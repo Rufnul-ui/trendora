@@ -119,7 +119,7 @@
       "rating": 4.5,
       "category": ["Men", "Women"],
       "colors": ["Black", "Grey", "White"],
-      "sizes": ["S", "M", "L", "XL"]
+      "sizes": ["S", "M", "L"]
     },
     {
       "id": "2",
@@ -130,7 +130,7 @@
       "rating": 4.5,
       "category": ["Men", "Women"],
       "colors": ["Black", "Blue"],
-      "sizes": ["S", "M", "L", "XL", "XXL"]
+      "sizes": ["S", "M", "L"]
     },
     {
       "id": "3",
@@ -152,7 +152,7 @@
       "rating": 4.5,
       "category": ["Men", "Women"],
       "colors": ["Black", "White", "Green"],
-      "sizes": ["M", "L", "XL"]
+      "sizes": ["M", "L"]
     },
     {
       "id": "5",
@@ -174,7 +174,7 @@
       "rating": 4.5,
       "category": ["Women"],
       "colors": ["Black", "Red", "Blue"],
-      "sizes": ["S", "M", "L", "XL"]
+      "sizes": ["S", "M", "XL"]
     },
     {
       "id": "7",
@@ -183,7 +183,7 @@
       "title": "AirPods",
       "price": 5000,
       "rating": 4.5,
-      "category": ["Men", "Women", "Accessories"],
+      "category": ["Accessories"],
       "colors": ["White", "Black"],
       "sizes": ["One Size"]
     },
@@ -196,7 +196,7 @@
       "rating": 4.5,
       "category": ["Men", "Women"],
       "colors": ["Grey", "Blue", "Black"],
-      "sizes": ["S", "M", "L", "XL", "XXL"]
+      "sizes": ["S", "L", "XL", "XXL"]
     }
   ],
   "$schema": ["./node_modules/json-server/schema.json"]

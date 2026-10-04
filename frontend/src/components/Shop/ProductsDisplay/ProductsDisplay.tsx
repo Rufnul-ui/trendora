@@ -1,42 +1,18 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { Heart, ShoppingCart, Zap } from "lucide-react";
 import s from "./ProductsDisplay.module.css";
+import type { Product } from "../Shop";
 
-type Product = {
-  id: string;
-  image: string;
-  alt: string;
-  title: string;
-  price: number;
-  rating: number;
+type ProductsDisplayProps = {
+  products: Product[];
 };
 
-const ProductsDisplay = () => {
-  const [products, setProducts] = useState<Product[]>([]);
+const ProductsDisplay = ({ products }: ProductsDisplayProps) => {
   const [sort, setSort] = useState("featured");
   const [wishlist, setWishlist] = useState<string[]>([]);
-
-  useEffect(() => {
-    const getProducts = async () => {
-      try {
-        const response = await fetch("http://localhost:3001/allProducts");
-
-        if (!response.ok) {
-          throw new Error("Failed to fetch products");
-        }
-
-        const data: Product[] = await response.json();
-        setProducts(data);
-      } catch (error) {
-        console.error("Error fetching products:", error);
-      }
-    };
-
-    getProducts();
-  }, []);
 
   const toggleWishlist = (id: string) => {
     setWishlist((prev) =>
@@ -61,6 +37,7 @@ const ProductsDisplay = () => {
       <div className={s.topBar}>
         <div>
           <h2 className={s.heading}>All Products</h2>
+
           <p className={s.resultCount}>{products.length} Products</p>
         </div>
 
@@ -77,83 +54,89 @@ const ProductsDisplay = () => {
         </select>
       </div>
 
-      <div className={s.grid}>
-        {sortedProducts.map((product) => {
-          const isWishlisted = wishlist.includes(product.id);
+      {sortedProducts.length === 0 ? (
+        <div className={s.emptyState}>
+          <p className={s.empty}>No products found.</p>
+        </div>
+      ) : (
+        <div className={s.grid}>
+          {sortedProducts.map((product) => {
+            const isWishlisted = wishlist.includes(product.id);
 
-          return (
-            <article className={s.card} key={product.id}>
-              <div className={s.imageWrapper}>
-                <Image
-                  src={product.image}
-                  alt={product.alt || product.title}
-                  fill
-                  className={s.image}
-                  sizes="(max-width: 480px) 50vw, (max-width: 768px) 50vw, (max-width: 1100px) 50vw, 33vw"
-                />
-
-                <button
-                  type="button"
-                  className={`${s.wishlist} ${
-                    isWishlisted ? s.wishlisted : ""
-                  }`}
-                  onClick={() => toggleWishlist(product.id)}
-                  aria-label={
-                    isWishlisted
-                      ? `Remove ${product.title} from wishlist`
-                      : `Add ${product.title} to wishlist`
-                  }
-                >
-                  <Heart
-                    size={18}
-                    strokeWidth={1.8}
-                    fill={isWishlisted ? "currentColor" : "none"}
+            return (
+              <article className={s.card} key={product.id}>
+                <div className={s.imageWrapper}>
+                  <Image
+                    src={product.image}
+                    alt={product.alt || product.title}
+                    fill
+                    className={s.image}
+                    sizes="(max-width: 480px) 50vw, (max-width: 768px) 50vw, (max-width: 1100px) 50vw, 33vw"
                   />
-                </button>
 
-                <div className={s.imageActions}>
-                  <button type="button" className={s.quickButton}>
-                    Quick View
+                  <button
+                    type="button"
+                    className={`${s.wishlist} ${
+                      isWishlisted ? s.wishlisted : ""
+                    }`}
+                    onClick={() => toggleWishlist(product.id)}
+                    aria-label={
+                      isWishlisted
+                        ? `Remove ${product.title} from wishlist`
+                        : `Add ${product.title} to wishlist`
+                    }
+                  >
+                    <Heart
+                      size={18}
+                      strokeWidth={1.8}
+                      fill={isWishlisted ? "currentColor" : "none"}
+                    />
                   </button>
+
+                  <div className={s.imageActions}>
+                    <button type="button" className={s.quickButton}>
+                      Quick View
+                    </button>
+                  </div>
                 </div>
-              </div>
 
-              <div className={s.details}>
-                <h3 className={s.name}>{product.title}</h3>
+                <div className={s.details}>
+                  <h3 className={s.name}>{product.title}</h3>
 
-                <div className={s.meta}>
-                  <div className={s.rating}>
-                    <span className={s.star}>★</span>
-                    <span>{product.rating}</span>
+                  <div className={s.meta}>
+                    <div className={s.rating}>
+                      <span className={s.star}>★</span>
+                      <span>{product.rating}</span>
+                    </div>
+
+                    <span className={s.separator}>|</span>
+
+                    <span className={s.reviews}>Trusted Product</span>
                   </div>
 
-                  <span className={s.separator}>|</span>
+                  <div className={s.priceRow}>
+                    <p className={s.price}>
+                      ₹{product.price.toLocaleString("en-IN")}
+                    </p>
+                  </div>
 
-                  <span className={s.reviews}>Trusted Product</span>
+                  <div className={s.actions}>
+                    <button type="button" className={s.cartButton}>
+                      <ShoppingCart size={17} strokeWidth={2} />
+                      <span>Add to Cart</span>
+                    </button>
+
+                    <button type="button" className={s.buyButton}>
+                      <Zap size={16} fill="currentColor" />
+                      <span>Buy Now</span>
+                    </button>
+                  </div>
                 </div>
-
-                <div className={s.priceRow}>
-                  <p className={s.price}>
-                    ₹{product.price.toLocaleString("en-IN")}
-                  </p>
-                </div>
-
-                <div className={s.actions}>
-                  <button type="button" className={s.cartButton}>
-                    <ShoppingCart size={17} strokeWidth={2} />
-                    <span>Add to Cart</span>
-                  </button>
-
-                  <button type="button" className={s.buyButton}>
-                    <Zap size={16} fill="currentColor" />
-                    <span>Buy Now</span>
-                  </button>
-                </div>
-              </div>
-            </article>
-          );
-        })}
-      </div>
+              </article>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 };

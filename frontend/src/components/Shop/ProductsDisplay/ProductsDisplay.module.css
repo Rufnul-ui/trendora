@@ -295,6 +295,14 @@
   transform: translateY(-1px);
 }
 
+.empty {
+  display: flex;
+  justify-content: center;
+  color: gray;
+  font-size: 18px;
+  font-weight: 400;
+}
+
 /* TABLET */
 
 @media (max-width: 1100px) {

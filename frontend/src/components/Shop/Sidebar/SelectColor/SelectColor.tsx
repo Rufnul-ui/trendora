@@ -1,19 +1,23 @@
 import React from "react";
 import s from "./SelectColor.module.css";
+import colors from "@/utils/constants/colors";
 
-const colors = [
-  { name: "Black", value: "#000000" },
-  { name: "White", value: "#ffffff" },
-  { name: "Red", value: "#c62828" },
-  { name: "Blue", value: "#1565c0" },
-  { name: "Green", value: "#2e7d32" },
-  { name: "Yellow", value: "#f9a825" },
-  { name: "Pink", value: "#ec407a" },
-  { name: "Brown", value: "#795548" },
-  { name: "Grey", value: "#9e9e9e" },
-];
+type ColorsProps = {
+  selectedColors: string[];
+  setSelectedColors: React.Dispatch<React.SetStateAction<string[]>>;
+};
 
-const SelectColor = () => {
+const SelectColor = ({ selectedColors, setSelectedColors }: ColorsProps) => {
+  const handleColorChange = (color: string) => {
+    setSelectedColors((prev) => {
+      if (prev.includes(color)) {
+        return prev.filter((item) => item !== color);
+      }
+
+      return [...prev, color];
+    });
+  };
+
   return (
     <div className={s.wrapper}>
       <h3 className={s.title}>Select Color</h3>
@@ -21,7 +25,13 @@ const SelectColor = () => {
       <div className={s.colors}>
         {colors.map((color) => (
           <label key={color.name} className={s.color}>
-            <input type="checkbox" name="color" value={color.name} />
+            <input
+              type="checkbox"
+              name="color"
+              value={color.name}
+              checked={selectedColors.includes(color.name)}
+              onChange={() => handleColorChange(color.name)}
+            />
 
             <span
               className={s.circle}

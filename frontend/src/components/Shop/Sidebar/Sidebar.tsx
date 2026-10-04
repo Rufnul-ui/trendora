@@ -5,7 +5,27 @@ import PriceRange from "./PriceRange/PriceRange";
 import Sizes from "./Sizes/Sizes";
 import SelectColor from "./SelectColor/SelectColor";
 
-const Sidebar = () => {
+type SidebarProps = {
+  selectedCategory: string[];
+  setSelectedCategory: React.Dispatch<React.SetStateAction<string[]>>;
+  selectedPriceRange: string[];
+  setSelectedPriceRange: React.Dispatch<React.SetStateAction<string[]>>;
+  selectedColors: string[];
+  setSelectedColors: React.Dispatch<React.SetStateAction<string[]>>;
+  selectedSizes: string[];
+  setSelectedSizes: React.Dispatch<React.SetStateAction<string[]>>;
+};
+
+const Sidebar = ({
+  selectedCategory,
+  setSelectedCategory,
+  selectedPriceRange,
+  setSelectedPriceRange,
+  selectedColors,
+  setSelectedColors,
+  selectedSizes,
+  setSelectedSizes,
+}: SidebarProps) => {
   return (
     <div className={s.wrapper}>
       <div className={s.header}>
@@ -17,10 +37,25 @@ const Sidebar = () => {
       </div>
 
       <div className={s.filters}>
-        <Categories />
-        <PriceRange />
-        <Sizes />
-        <SelectColor />
+        <Categories
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+        />
+
+        <PriceRange
+          selectedPriceRange={selectedPriceRange}
+          setSelectedPriceRange={setSelectedPriceRange}
+        />
+
+        <Sizes
+          selectedSizes={selectedSizes}
+          setSelectedSizes={setSelectedSizes}
+        />
+
+        <SelectColor
+          selectedColors={selectedColors}
+          setSelectedColors={setSelectedColors}
+        />
       </div>
     </div>
   );

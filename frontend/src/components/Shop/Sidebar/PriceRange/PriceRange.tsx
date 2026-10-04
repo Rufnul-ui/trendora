@@ -1,24 +1,39 @@
 import React from "react";
 import s from "./PriceRange.module.css";
+import priceRange from "@/utils/constants/priceRange";
 
-const priceRanges = [
-  "Under ₹1,000",
-  "₹1,000 - ₹2,000",
-  "₹2,000 - ₹5,000",
-  "Above ₹5,000",
-];
+type PriceRangeProps = {
+  selectedPriceRange: string[];
+  setSelectedPriceRange: React.Dispatch<React.SetStateAction<string[]>>;
+};
 
-const PriceRange = () => {
+const PriceRange = ({
+  selectedPriceRange,
+  setSelectedPriceRange,
+}: PriceRangeProps) => {
+  const handlePriceChange = (price: string) => {
+    setSelectedPriceRange((prev) => {
+      if (prev.includes(price)) {
+        return prev.filter((item) => item !== price);
+      }
+
+      return [...prev, price];
+    });
+  };
   return (
     <div className={s.wrapper}>
       <h3 className={s.title}>Price Range</h3>
 
       <div className={s.options}>
-        {priceRanges.map((range) => (
-          <label key={range} className={s.option}>
-            <input type="checkbox" />
+        {priceRange.map((price) => (
+          <label key={price} className={s.option}>
+            <input
+              type="checkbox"
+              checked={selectedPriceRange.includes(price)}
+              onChange={() => handlePriceChange(price)}
+            />
             <span className={s.checkbox} />
-            <span className={s.label}>{range}</span>
+            <span className={s.label}>{price}</span>
           </label>
         ))}
       </div>

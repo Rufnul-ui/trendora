@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import OTPInput from "./OTPInput/OTPInput";
 import VerifyButton from "./VerifyButton/VerifyButton";
 import ResendOTP from "./ResendOTP/ResendOTP";
@@ -8,6 +8,10 @@ import s from "./VerifyOTP.module.css";
 import { useRouter } from "next/navigation";
 
 const VerifyOTP = () => {
+  const [message, setMessage] = useState("");
+  const [messageType, setMessageType] = useState<"success" | "error">(
+    "success",
+  );
   const [otp, setOtp] = useState("");
   const router = useRouter();
 
@@ -15,13 +19,30 @@ const VerifyOTP = () => {
   const correctOTP = "123123";
 
   const handleVerify = () => {
-    if (otp === correctOTP) {
-      router.push("/resetPassword");
-      console.log("OTP Verified Successfully");
-    } else {
-      console.log("Invalid OTP");
+    try {
+      if (otp === correctOTP) {
+        setMessageType("success");
+        setMessage("OTP Verified");
+        router.push("/resetPassword");
+      } else {
+        setMessageType("error");
+        setMessage("Invalid OTP check again");
+      }
+    } catch (error) {
+      console.error(error);
+      setMessage("Something went Wrong");
     }
   };
+
+  useEffect(() => {
+    if (!message) return;
+
+    const timer = setTimeout(() => {
+      setMessage("");
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, [message]);
 
   const handleResend = () => {
     console.log("Temporary OTP:", correctOTP);
@@ -29,6 +50,14 @@ const VerifyOTP = () => {
 
   return (
     <div className={s.container}>
+      {message && (
+        <div
+          className={`${s.toast} ${messageType === "success" ? s.success : s.error}`}
+        >
+          {message}
+        </div>
+      )}
+
       <div className={s.card}>
         <h1>Verify OTP</h1>
 
