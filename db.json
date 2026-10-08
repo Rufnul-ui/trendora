@@ -199,5 +199,8 @@
       "sizes": ["S", "L", "XL", "XXL"]
     }
   ],
+  "wishlist": [
+    
+  ],
   "$schema": ["./node_modules/json-server/schema.json"]
 }

@@ -5,18 +5,7 @@ import s from "./Shop.module.css";
 import Sidebar from "./Sidebar/Sidebar";
 import ProductsDisplay from "./ProductsDisplay/ProductsDisplay";
 import filterProducts from "@/utils/filters/filterProducts";
-
-export type Product = {
-  id: string;
-  image: string;
-  alt: string;
-  title: string;
-  price: number;
-  rating: number;
-  category: string[];
-  colors: string[];
-  sizes: string[];
-};
+import { getProducts, type Product } from "@/api/product/product";
 
 const Shop = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -26,22 +15,16 @@ const Shop = () => {
   const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
 
   useEffect(() => {
-    const getProducts = async () => {
+    const fetchProducts = async () => {
       try {
-        const response = await fetch("http://localhost:3001/allProducts");
-
-        if (!response.ok) {
-          throw new Error("Failed to fetch products");
-        }
-
-        const data: Product[] = await response.json();
+        const data = await getProducts();
         setProducts(data);
       } catch (error) {
         console.error("Error fetching products:", error);
       }
     };
 
-    getProducts();
+    fetchProducts();
   }, []);
 
   const filteredProducts = filterProducts(

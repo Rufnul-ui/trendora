@@ -1,21 +1,48 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import s from "./Wishlist.module.css";
 import WishlistEmpty from "./WishlistEmpty/WishlistEmpty";
 import WishlistCard from "./WishlistCard/WishlistCard";
-import { useWishlist } from "@/context/WishlistContext";
+import {
+  getWishlist,
+  type Wishlist as WishlistType,
+} from "@/api/product/wishlist";
+import { getProducts, type Product } from "@/api/product/product";
 
 const Wishlist = () => {
-  const { wishlist } = useWishlist();
+  const [wishlist, setWishlist] = useState<WishlistType[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
 
-  if (wishlist.length === 0) {
+  useEffect(() => {
+    const fetchWishlist = async () => {
+      try {
+        const [wishlistData, productData] = await Promise.all([
+          getWishlist(),
+          getProducts(),
+        ]);
+
+        setWishlist(wishlistData);
+        setProducts(productData);
+      } catch (error) {
+        console.error("Error loading wishlist data:", error);
+      }
+    };
+
+    fetchWishlist();
+  }, []);
+
+  const wishlistProducts = wishlist
+    .map((item) => products.find((product) => product.id === item.productId))
+    .filter((product): product is Product => product !== undefined);
+
+  if (wishlistProducts.length === 0) {
     return <WishlistEmpty />;
   }
 
   return (
     <div className={s.wrapper}>
-      {wishlist.map((product) => (
+      {wishlistProducts.map((product) => (
         <WishlistCard key={product.id} product={product} />
       ))}
     </div>
